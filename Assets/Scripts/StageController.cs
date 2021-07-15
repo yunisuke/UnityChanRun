@@ -16,9 +16,9 @@ public class StageController : MonoBehaviour
         for(int i=0; i<stages.Length; i++)
         {
             var stage = stages[i];
-            stage.position = new Vector2(stage.position.x - 0.1f, stage.position.y);
-            if (stage.position.x < -25) {
-                stage.position = new Vector2(stage.position.x + 50, stage.position.y);
+            stage.localPosition = new Vector2(stage.localPosition.x - 0.1f, stage.localPosition.y);
+            if (stage.localPosition.x < -40) {
+                stage.localPosition = new Vector2(stage.localPosition.x + 60, stage.localPosition.y);
             }
         }
     }
