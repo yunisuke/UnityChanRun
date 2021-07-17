@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
                 airJumpNum++;
             }
             rb.velocity = new Vector2(0, 20);
+            SoundManager.Instance.PlaySE(SEType.Jump);
         }
 
         // 接地したら再ジャンプ可能にする
