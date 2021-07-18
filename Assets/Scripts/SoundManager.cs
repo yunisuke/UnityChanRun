@@ -31,7 +31,10 @@ public class SoundManager
             GameObject.DontDestroyOnLoad(obj);
             bgmAudio = obj.AddComponent<AudioSource>();
             bgmAudio.loop = true;
+            bgmAudio.volume = 0.3f;
+
             seAudio = obj.AddComponent<AudioSource>();
+            seAudio.volume = 0.3f;
             //obj.AddComponent<AudioListener>();
         }
 
@@ -66,6 +69,8 @@ public class SoundManager
 
     private readonly string[] SE_Names = {
         "Jump",
+        "coin05",
+        "Attack",
     };
 }
 
@@ -75,6 +80,8 @@ public enum BGMType {
 
 public enum SEType {
     Jump,
+    Coin,
+    Attack,
 }
 
 
