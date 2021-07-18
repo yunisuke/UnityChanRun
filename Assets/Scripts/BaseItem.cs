@@ -7,8 +7,9 @@ public abstract class BaseItem : MonoBehaviour
     [SerializeField]
     private SEType hitSe;
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.tag != "Player") return;
         SoundManager.Instance.PlaySE(hitSe);
         ItemEffect();
     }
