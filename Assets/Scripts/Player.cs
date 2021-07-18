@@ -45,12 +45,6 @@ public class Player : MonoBehaviour
         animator.SetFloat("FallSpeed", rb.velocity.y);
     }
 
-    void FixedUpdate()
-    {
-        // 重力
-        rb.AddForce(new Vector2(0, -50f));
-    }
-
     private bool IsOnGround()
     {
         if (groundChecker.distanceFromGround <= 0.001f && rb.velocity.y <= 0) 
