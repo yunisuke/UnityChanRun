@@ -9,7 +9,7 @@ public class SampleSceneScript : MonoBehaviour
     {
         FPSManager.Instance.Initialize ();
         SoundManager.Instance.Initialize ();
-        SoundManager.Instance.PlayBGM(BGMType.Main);
+        //SoundManager.Instance.PlayBGM(BGMType.Main);
     }
 
     // Update is called once per frame
