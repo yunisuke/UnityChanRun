@@ -9,7 +9,7 @@ public abstract class BaseItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag != "Player") return;
+        if (col.tag != "Bullet") return;
         SoundManager.Instance.PlaySE(hitSe);
         ItemEffect();
     }

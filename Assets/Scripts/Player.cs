@@ -11,18 +11,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] LayerMask groundMask;
     [SerializeField] GroundChecker groundChecker;
+    [SerializeField] private Transform shotTr;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator> ();
+        animator = GetComponent<Animator> ();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && airJumpNum < 1)
+        if (IsClickJumpButton() && airJumpNum < 1)
         {
             if (IsOnGround() == false)
             {
@@ -41,8 +42,25 @@ public class Player : MonoBehaviour
 		
 		// update animator parameters
 		animator.SetFloat ("GroundDistance", groundChecker.distanceFromGround);
-        animator.SetTrigger("Jumping");
         animator.SetFloat("FallSpeed", rb.velocity.y);
+
+        if (IsClickRightButton())
+        {
+            transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+        }
+
+        if (IsClickLeftButton())
+        {
+            transform.position = new Vector2(transform.position.x - 0.07f, transform.position.y);
+        }
+
+        if (IsClickAttackButton())
+        {
+            animator.SetTrigger("Attack");
+        }
+
+        isJump = false;
+        isAttack = false;
     }
 
     private bool IsOnGround()
@@ -53,5 +71,90 @@ public class Player : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool IsClickAttackButton()
+    {
+        // ボタン操作
+        if (isAttack) return true;
+
+        // キーボード操作
+        if (Input.GetKeyDown(KeyCode.Z)) return true;
+
+        return false;
+    }
+
+    public bool IsClickJumpButton()
+    {
+        // ボタン操作
+        if (isJump) return true;
+
+        // キーボード操作
+        if (Input.GetKeyDown(KeyCode.Space)) return true;
+
+        return false;
+    }
+
+    public bool IsClickRightButton()
+    {
+        // ボタン操作
+        if (isRight) return true;
+
+        // キーボード操作
+        if (Input.GetKey(KeyCode.RightArrow)) return true;
+
+        return false;
+    }
+
+    public bool IsClickLeftButton()
+    {
+        // ボタン操作
+        if (isLeft) return true;
+
+        // キーボード操作
+        if (Input.GetKey(KeyCode.LeftArrow)) return true;
+
+        return false;
+    }
+
+    bool isRight;
+    bool isLeft;
+    bool isJump;
+    bool isAttack;
+    public void OnPointerDownRightkButton()
+    {
+        isRight = true;
+    }
+
+    public void OnPointerUpRightButton()
+    {
+        isRight = false;
+    }
+
+    public void OnPointerDownLeftButton()
+    {
+        isLeft = true;
+    }
+
+    public void OnPointerUpLeftButton()
+    {
+        isLeft = false;
+    }
+
+    public void OnClickJumpButton()
+    {
+        isJump = true;
+    }
+
+    public void OnClickAttackButton()
+    {
+        isAttack = true;
+    }
+
+    [SerializeField] private GameObject bulletPrefab;
+    public void Attack()
+    {
+        SoundManager.Instance.PlaySE(SEType.Shot);
+        Instantiate(bulletPrefab, shotTr.position, Quaternion.identity);
     }
 }

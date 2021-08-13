@@ -69,6 +69,7 @@ public class SoundManager
         "Jump",
         "coin05",
         "Attack",
+        "laser2",
     };
 }
 
@@ -80,6 +81,7 @@ public enum SEType {
     Jump,
     Coin,
     Attack,
+    Shot,
 }
 
 
