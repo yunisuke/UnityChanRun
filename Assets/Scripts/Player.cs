@@ -52,10 +52,12 @@ public class Player : MonoBehaviour
             if (IsOnGround() == false)
             {
                 airJumpNum++;
+                SoundManager.Instance.PlayVoice(VoiceType.JumpOneMore);
                 rb.velocity = new Vector2(0, 17);
             }
             else
             {
+                SoundManager.Instance.PlayVoice(VoiceType.Jump);
                 rb.velocity = new Vector2(0, 20);
             }
             

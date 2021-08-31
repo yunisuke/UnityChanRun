@@ -13,8 +13,12 @@ public class SoundManager
     // SE
     private List<AudioClip> seList = new List<AudioClip>();
 
+    // Voice
+    private List<AudioClip> voiceList = new List<AudioClip>();
+
     private AudioSource bgmAudio = new AudioSource ();
     private AudioSource seAudio = new AudioSource ();
+    private AudioSource voiceAudio = new AudioSource ();
 
     private SoundManager () {
 
@@ -33,11 +37,13 @@ public class SoundManager
             bgmAudio.loop = true;
 
             seAudio = obj.AddComponent<AudioSource>();
+            voiceAudio = obj.AddComponent<AudioSource>();
             //obj.AddComponent<AudioListener>();
         }
 
         bgmList = Resources.LoadAll<AudioClip> ("BGM").ToList();
         seList = Resources.LoadAll<AudioClip> ("SE").ToList ();
+        voiceList = Resources.LoadAll<AudioClip> ("Voice").ToList ();
     }
 
     public void PlayBGM (BGMType bgm_type)
@@ -61,6 +67,13 @@ public class SoundManager
         seAudio.PlayOneShot (se);
     }
 
+    public void PlayVoice (VoiceType voice_type) {
+        var voice = voiceList.Find (x => x.name == Voice_Names[(int)voice_type]);
+        if (voice == null) return;
+
+        voiceAudio.PlayOneShot(voice);
+    }
+
     private readonly string[] BGM_Names = {
         "Main"
     };
@@ -70,6 +83,11 @@ public class SoundManager
         "coin05",
         "Attack",
         "laser2",
+    };
+
+    private readonly string[] Voice_Names = {
+        "uni1511",
+        "uni1510",
     };
 }
 
@@ -84,4 +102,7 @@ public enum SEType {
     Shot,
 }
 
-
+public enum VoiceType {
+    Jump,
+    JumpOneMore,
+}
