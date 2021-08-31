@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coin : BaseItem
 {
-    protected override void ItemEffect()
+    public override void ItemEffect()
     {
         Destroy(gameObject);
     }

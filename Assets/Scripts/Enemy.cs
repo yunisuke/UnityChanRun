@@ -7,39 +7,32 @@ public class Enemy : BaseItem
     [SerializeField]
     private Sprite damageSprite;
 
+    [SerializeField]
+    private BoxCollider2D hitCollider;
 
-    private SpriteRenderer sr;
+    [SerializeField]
+    private BoxCollider2D groundCollider;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
     private Rigidbody2D rb;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     private bool front;
     private bool back;
-    protected override void ItemEffect()
+    public override void ItemEffect()
     {
-        rb.velocity = new Vector2(10, 20);
-        sr.sprite = damageSprite;
-        GetComponent<BoxCollider2D>().enabled = false;
-        int rnd = Random.Range(0, 3);
-        if (rnd == 0) front = true;
-        if (rnd == 1) back = true; 
+        rb.velocity = new Vector2(10, 10);
+        spriteRenderer.sprite = damageSprite;
+        hitCollider.enabled = false;
+        groundCollider.enabled = false;
+
+        GetComponent<Animator>().SetTrigger("DamageTrigger"); 
         Destroy(gameObject, 3f);
     }
 
-    void Update()
-    {
-        if (front)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.15f);
-        }
-
-        if (back)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.15f);
-            sr.sortingOrder = -1;
-        }
-    }
 }

@@ -14,5 +14,5 @@ public abstract class BaseItem : MonoBehaviour
         ItemEffect();
     }
 
-    protected abstract void ItemEffect();
+    public abstract void ItemEffect();
 }
