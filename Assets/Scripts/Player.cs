@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2(0, 20);
             SoundManager.Instance.PlaySE(SEType.Attack);
+            SoundManager.Instance.PlayVoice(VoiceType.Attack);
             var en = col.GetComponentInParent<Enemy>();
             en.ItemEffect();
             return;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
             if (IsOnGround() == false)
             {
                 airJumpNum++;
+                anm.SetTrigger("OneMoreJumpTrigger");
                 SoundManager.Instance.PlayVoice(VoiceType.JumpOneMore);
                 rb.velocity = new Vector2(0, 17);
             }

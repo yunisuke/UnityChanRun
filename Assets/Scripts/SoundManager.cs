@@ -86,8 +86,10 @@ public class SoundManager
     };
 
     private readonly string[] Voice_Names = {
-        "uni1511",
-        "uni1510",
+        "univ0001",
+        "univ0002",
+        "univ1254",
+        "univ1255",
     };
 }
 
@@ -105,4 +107,5 @@ public enum SEType {
 public enum VoiceType {
     Jump,
     JumpOneMore,
+    Attack,
 }
