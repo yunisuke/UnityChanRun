@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
             SoundManager.Instance.PlayVoice(VoiceType.Attack);
             var en = col.GetComponentInParent<Enemy>();
             en.ItemEffect();
+
+            if (airJumpNum > 0) airJumpNum = 0;
             return;
         }
         anm.SetTrigger("DamageTrigger");
