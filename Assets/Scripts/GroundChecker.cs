@@ -20,4 +20,9 @@ public class GroundChecker : MonoBehaviour
         var distanceFromGround = Physics2D.Raycast (transform.position, Vector3.down, 30, groundMask);
         return distanceFromGround.distance - offset;
     }
+
+    public void SetActive(bool isActive)
+    {
+        GetComponent<Collider2D>().enabled = isActive;
+    }
 }

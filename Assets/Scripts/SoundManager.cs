@@ -89,7 +89,7 @@ public class SoundManager
         "univ0001",
         "univ0002",
         "univ1254",
-        "univ1255",
+        "univ1094",
     };
 }
 
@@ -108,4 +108,5 @@ public enum VoiceType {
     Jump,
     JumpOneMore,
     Attack,
+    Damage,
 }

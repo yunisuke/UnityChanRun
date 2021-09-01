@@ -11,4 +11,9 @@ public class HitChecker : MonoBehaviour
     {
         OnTriggerEnterEvent(col);
     }
+
+    public void SetActive(bool isActive)
+    {
+        GetComponent<Collider2D>().enabled = isActive;
+    }
 }

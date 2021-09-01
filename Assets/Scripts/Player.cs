@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
             if (airJumpNum > 0) airJumpNum = 0;
             return;
         }
+
+        rb.velocity = new Vector2(-4, 10);
+        hitChk.SetActive(false);
+        grChk.SetActive(false);
+        SoundManager.Instance.PlayVoice(VoiceType.Damage);
         anm.SetTrigger("DamageTrigger");
     }
 
