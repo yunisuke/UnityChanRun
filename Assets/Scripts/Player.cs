@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     private int airJumpNum;
     private int count;
 
+    private bool enabledInput = true;
+
     [SerializeField] private Transform shotTr;
     [SerializeField] private Animator anm;
     [SerializeField] private GroundChecker grChk;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private HitChecker hitChk;
+
+    [SerializeField] private GameObject gameOverObj;
 
     void Start()
     {
@@ -46,11 +51,15 @@ public class Player : MonoBehaviour
             return;
         }
 
+        // ゲームオーバー演出
         rb.velocity = new Vector2(-4, 10);
         hitChk.SetActive(false);
         grChk.SetActive(false);
         SoundManager.Instance.PlayVoice(VoiceType.Damage);
         anm.SetTrigger("DamageTrigger");
+        enabledInput = false;
+
+        gameOverObj.SetActive(true);
     }
 
     void Update()
@@ -62,15 +71,21 @@ public class Player : MonoBehaviour
                 airJumpNum++;
                 anm.SetTrigger("OneMoreJumpTrigger");
                 SoundManager.Instance.PlayVoice(VoiceType.JumpOneMore);
-                rb.velocity = new Vector2(0, 17);
+                rb.velocity = new Vector2(0, 15);
             }
             else
             {
                 SoundManager.Instance.PlayVoice(VoiceType.Jump);
-                rb.velocity = new Vector2(0, 20);
+                rb.velocity = new Vector2(0, 18);
             }
             
             SoundManager.Instance.PlaySE(SEType.Jump);
+        }
+
+        // タップされた & ゲームオーバー
+        if (Input.GetMouseButtonDown(0) && enabledInput == false)
+        {
+            SceneManager.LoadScene("SampleScene");
         }
 
         // 接地したら再ジャンプ可能にする
@@ -126,6 +141,9 @@ public class Player : MonoBehaviour
 
     public bool IsClickJumpButton()
     {
+        // 入力有効確認
+        if (enabledInput == false) return false;
+
         // ボタン操作
         if (isJump) return true;
 
