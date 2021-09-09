@@ -17,14 +17,31 @@ public class Enemy : BaseItem
     private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
-    void Awake()
+    
+    protected override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
     private bool front;
     private bool back;
-    public override void ItemEffect()
+    protected override void ItemEffect(Player player)
+    {
+        if (player.IsOnGround())
+        {
+            // 地上で接敵するとゲームオーバー
+            var main = GameObject.Find("SampleScene").GetComponent<SampleSceneScript>();
+            main.GameOver();
+        }
+        else
+        {
+            // 空中で接敵すると撃破
+            player.DefeatEnemy();
+            Dead();
+        }
+    }
+
+    private void Dead()
     {
         rb.velocity = new Vector2(10, 10);
         spriteRenderer.sprite = damageSprite;
@@ -34,5 +51,4 @@ public class Enemy : BaseItem
         GetComponent<Animator>().SetTrigger("DamageTrigger"); 
         Destroy(gameObject, 3f);
     }
-
 }

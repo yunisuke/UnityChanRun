@@ -4,15 +4,24 @@ using UnityEngine;
 
 public abstract class BaseItem : MonoBehaviour
 {
-    [SerializeField]
-    private SEType hitSe;
+    [SerializeField] private SEType hitSe;
+    private HitChecker hitChk;
 
-    void OnTriggerEnter2D(Collider2D col)
+    void Awake()
     {
-        if (col.tag != "Bullet") return;
-        SoundManager.Instance.PlaySE(hitSe);
-        ItemEffect();
+        hitChk = GetComponentInChildren<HitChecker>();
+        hitChk.OnTriggerEnterEvent += OnTriggerEnterEvent;
+
+        Initialize();
     }
 
-    public abstract void ItemEffect();
+    private void OnTriggerEnterEvent(Collider2D col)
+    {
+        if (col.tag != "Player") return;
+        SoundManager.Instance.PlaySE(hitSe);
+        ItemEffect(col.GetComponentInParent<Player>());
+    }
+
+    protected abstract void ItemEffect(Player player);
+    protected virtual void Initialize() {}
 }

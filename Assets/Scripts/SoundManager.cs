@@ -80,7 +80,7 @@ public class SoundManager
 
     private readonly string[] SE_Names = {
         "Jump",
-        "coin05",
+        "Coin",
         "Attack",
         "laser2",
     };

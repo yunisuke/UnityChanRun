@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 671233994184186660}
   - component: {fileID: 671233994184186661}
+  - component: {fileID: 6228392727334733419}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: Player
@@ -139,6 +140,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &6228392727334733419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671233994184186663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f434f2b59210e4facb1bea2bca8c95c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &671233994201856996
 GameObject:
   m_ObjectHideFlags: 0
