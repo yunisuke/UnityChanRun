@@ -21,7 +21,7 @@ public class StageController : MonoBehaviour
         for(int i=0; i<stages.Length; i++)
         {
             var stage = stages[i];
-            stage.LocalPosition = new Vector2(stage.LocalPosition.x - 0.1f, stage.LocalPosition.y);
+            stage.LocalPosition = new Vector2(stage.LocalPosition.x - 0.15f, stage.LocalPosition.y);
             if (stage.LocalPosition.x < -60) {
                 stage.LocalPosition = new Vector2(stage.LocalPosition.x + 75, stage.LocalPosition.y);
                 InstantiateObject(stage);

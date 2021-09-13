@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private const int MaxAirJumpNum = 1;
 
     private int airJumpNum;
-    private int count;
 
     [SerializeField] private Transform shotTr;
     [SerializeField] private Animator anm;
@@ -26,16 +25,13 @@ public class Player : MonoBehaviour
     {
         anm.SetFloat ("GroundDistance", grChk.distanceFromGround);
         anm.SetFloat ("VelocityY", rb.velocity.y);
-        ResetJumpNum();
+        
+        if (IsOnGround()) ResetJumpNum();
     }
 
     private void ResetJumpNum()
     {
-        if (IsOnGround())
-        {
-            count = 0;
             airJumpNum = 0;
-        }
     }
 
     public void DefeatEnemy()
@@ -74,6 +70,13 @@ public class Player : MonoBehaviour
             
             SoundManager.Instance.PlaySE(SEType.Jump);
         }
+    }
+
+    public void Up()
+    {
+        ResetJumpNum();
+        SoundManager.Instance.PlayVoice(VoiceType.HighJump);
+        rb.velocity = new Vector2(0, 25);
     }
 
     public bool IsOnGround()

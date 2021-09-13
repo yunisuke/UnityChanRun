@@ -15,6 +15,6 @@ public class TitleSceneScript : MonoBehaviour
     public void OnClickStartButton()
     {
         SoundManager.Instance.PlayVoice(VoiceType.GameStart);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("InGameScene");
     }
 }

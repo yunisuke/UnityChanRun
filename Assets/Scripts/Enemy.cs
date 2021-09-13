@@ -30,14 +30,14 @@ public class Enemy : BaseItem
         if (player.IsOnGround())
         {
             // 地上で接敵するとゲームオーバー
-            var main = GameObject.Find("SampleScene").GetComponent<SampleSceneScript>();
-            main.GameOver();
+            InGameManager.Instance.GameOver();
         }
         else
         {
             // 空中で接敵すると撃破
             player.DefeatEnemy();
             Dead();
+            InGameManager.Instance.AddScore(1000);
         }
     }
 

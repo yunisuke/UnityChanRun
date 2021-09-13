@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-
-public class SampleSceneScript : MonoBehaviour
+public class InGameSceneScript : MonoBehaviour
 {
     [SerializeField] private Player pl;
     [SerializeField] private GameObject gameOverObj;
+    [SerializeField] private Text scoreText;
 
     private enum GameState
     {
@@ -24,6 +25,7 @@ public class SampleSceneScript : MonoBehaviour
 
         FPSManager.Instance.Initialize ();
         SoundManager.Instance.Initialize ();
+        InGameManager.Instance.Initialize (this);
         //SoundManager.Instance.PlayBGM(BGMType.Main);
     }
 
@@ -38,6 +40,13 @@ public class SampleSceneScript : MonoBehaviour
         state = GameState.GameOver;
         pl.GameOver();
         gameOverObj.SetActive(true);
+    }
+
+    int score = 0;
+    public void AddScore(int score)
+    {
+        this.score += score;
+        scoreText.text = this.score.ToString();
     }
 
     public bool IsTapScreen()
@@ -58,7 +67,7 @@ public class SampleSceneScript : MonoBehaviour
                 pl.Jump();
                 break;
             case GameState.GameOver:
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("InGameScene");
                 break;
         }
     }
