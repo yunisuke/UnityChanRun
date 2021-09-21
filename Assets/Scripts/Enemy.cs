@@ -20,7 +20,7 @@ public class Enemy : BaseItem
     
     protected override void Initialize()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();   
     }
 
     private bool front;
