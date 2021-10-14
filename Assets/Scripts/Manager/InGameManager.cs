@@ -1,3 +1,5 @@
+using InGameScene;
+
 namespace Manager
 {
     public class InGameManager
