@@ -6,6 +6,7 @@ namespace InGameScene
 {
     public class GroundChecker : MonoBehaviour
     {
+        // GroundCheckerに付与されたBoxCollider2Dにより地面と接触面に少し間ができてしまう。それを埋めるためのオフセット
         [SerializeField] private float offset = 0.07499957f;
 
         [SerializeField] LayerMask groundMask;

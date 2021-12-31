@@ -17,6 +17,9 @@ namespace InGameScene
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private HitChecker hitChk;
 
+        // 設置判定許容値。プレイヤーと地面までの距離は完全に0にならない。大きすぎると明らかに地面に接地していないのに接地判定されるので注意
+        [SerializeField] private float onGroundOffset = 0.01f;
+
         void Start()
         {
             anm.SetTrigger("RunTrigger");
@@ -83,7 +86,7 @@ namespace InGameScene
 
         public bool IsOnGround()
         {
-            if (grChk.distanceFromGround <= 0.001f && rb.velocity.y <= 0) 
+            if (grChk.distanceFromGround <= onGroundOffset && rb.velocity.y <= 0) 
             {
                 return true;
             }
