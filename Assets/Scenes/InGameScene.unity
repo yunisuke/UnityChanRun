@@ -1231,7 +1231,7 @@ MonoBehaviour:
   pos: {fileID: 0}
   coins: {fileID: 552455392606284791, guid: 94b4207b032d34bdb92cd568a7e55ae8, type: 3}
   enemys: {fileID: 8066117933548006220, guid: a17661f82a39041edb58cda68c27e621, type: 3}
-  stageSpeed: 0.01
+  stageSpeed: 0.015
   isBackground: 1
 --- !u!1 &426071605
 GameObject:
@@ -1419,7 +1419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &432344409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1647,7 +1647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &455318635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2633,7 +2633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &680172157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5250,7 +5250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1284328413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6860,7 +6860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -109.349976, y: -6.5999756}
+  m_AnchoredPosition: {x: -109.3501, y: -6.5999756}
   m_SizeDelta: {x: 204.65002, y: 71.630005}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1556229326
