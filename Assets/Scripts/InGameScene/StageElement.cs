@@ -20,12 +20,6 @@ namespace InGameScene
         {
             get {return enemyContainer;}
         }
-
-        public void SetSpeed(float speed)
-        {
-            // rb.velocity = new Vector2(-speed, 0);
-            // Debug.Log("set speed!" + speed);
-        }
         
         void Awake()
         {

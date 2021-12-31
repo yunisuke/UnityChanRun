@@ -12,6 +12,7 @@ namespace InGameScene
         [SerializeField] private Player pl;
         [SerializeField] private GameObject gameOverObj;
         [SerializeField] private Text scoreText;
+        [SerializeField] private Text speedLevelText;
 
         private enum GameState
         {
@@ -50,6 +51,11 @@ namespace InGameScene
         {
             this.score += score;
             scoreText.text = this.score.ToString();
+        }
+
+        public void UpdateSpeedLevelText(int speedLevel)
+        {
+            speedLevelText.text = speedLevel.ToString();
         }
 
         public bool IsTapScreen()

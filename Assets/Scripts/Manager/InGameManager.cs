@@ -29,5 +29,10 @@ namespace Manager
         {
             scr.AddScore(score);
         }
+
+        public void UpdateSpeedLevel(int speedLevel)
+        {
+            scr.UpdateSpeedLevelText(speedLevel);
+        }
     }
 }

@@ -11,10 +11,10 @@ namespace InGameScene
 
         [SerializeField] private GameObject coins;
         [SerializeField] private GameObject enemys;
-        [SerializeField] private float stageSpeed;
         private float stageOffset;
 
         [SerializeField] private bool isBackground = false;
+        private float speed;
 
         void Awake()
         {
@@ -22,20 +22,14 @@ namespace InGameScene
             stageOffset = stageElements.Length * tmp.gameObject.GetComponent<RectTransform>().sizeDelta.x;
         }
 
-        void Start()
-        {
-            foreach(var el in stageElements) el.SetSpeed(stageSpeed);
-        }
-
         void Update()
         {
             MoveStage();
         }
 
-        public void SetStageSpeed(float stageSpeed)
+        public void SetSpeed(float speed)
         {
-            this.stageSpeed = stageSpeed;
-            foreach(var stage in stageElements) stage.SetSpeed(stageSpeed);
+            this.speed = speed;
         }
 
         private void MoveStage()
@@ -43,10 +37,9 @@ namespace InGameScene
             for(int i=0; i<stageElements.Length; i++)
             {
                 var el = stageElements[i];
-                el.LocalPosition = new Vector2(el.LocalPosition.x - stageSpeed, el.LocalPosition.y);
+                el.LocalPosition = new Vector2(el.LocalPosition.x - speed, el.LocalPosition.y);
                 if (el.LocalPosition.x < -40) {
                     el.LocalPosition = new Vector2(el.LocalPosition.x + stageOffset, el.LocalPosition.y);
-                    el.SetSpeed(stageSpeed);
                     if (isBackground == false) InstantiateObject(el);
                 }
             }
