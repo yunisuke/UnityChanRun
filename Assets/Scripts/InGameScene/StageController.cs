@@ -16,21 +16,33 @@ namespace InGameScene
 
         void Awake()
         {
-            StartCoroutine(SpeedUpCoroutine());
+            StartCoroutine("SpeedUpCoroutine");
             SetStageSpeed(MapSpeeds[speedLevel]);
         }
 
-        int count = 0;
         private IEnumerator SpeedUpCoroutine()
         {
+            int counter = 0;
             while(true)
             {
-                count++;
-                if (count > 1000 && speedLevel < MaXSpeedLevel)
+                counter++;
+                if (counter > 1000 && speedLevel < MaXSpeedLevel)
                 {
                     UpSpeedLevel();
-                    count = 0;
+                    counter = 0;
                 }
+                yield return null;
+            }
+        }
+
+        private IEnumerator GameOverCoroutine()
+        {
+            int counter = 0;
+            const int StopFrameCount = 100;
+            while(counter < StopFrameCount)
+            {
+                counter++;
+                SetStageSpeed(MapSpeeds[speedLevel] * (StopFrameCount - counter)/StopFrameCount);
                 yield return null;
             }
         }
@@ -47,6 +59,12 @@ namespace InGameScene
         {
             mainStage.SetSpeed(speed);
             backgroundStage.SetSpeed(speed / 5f);
+        }
+
+        public void GameOver()
+        {
+            StopCoroutine("SpeedUpCoroutine");
+            StartCoroutine("GameOverCoroutine");
         }
     }
 }

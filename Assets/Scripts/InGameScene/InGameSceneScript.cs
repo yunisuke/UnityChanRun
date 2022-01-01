@@ -13,6 +13,7 @@ namespace InGameScene
         [SerializeField] private GameObject gameOverObj;
         [SerializeField] private Text scoreText;
         [SerializeField] private Text speedLevelText;
+        [SerializeField] private StageController stgCntrl;
 
         private enum GameState
         {
@@ -44,6 +45,7 @@ namespace InGameScene
             state = GameState.GameOver;
             pl.GameOver();
             gameOverObj.SetActive(true);
+            stgCntrl.GameOver();
         }
 
         int score = 0;

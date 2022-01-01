@@ -2119,6 +2119,7 @@ MonoBehaviour:
   gameOverObj: {fileID: 754812107}
   scoreText: {fileID: 1556229326}
   speedLevelText: {fileID: 1810944325}
+  stgCntrl: {fileID: 1615067464}
 --- !u!4 &551316698
 Transform:
   m_ObjectHideFlags: 0
@@ -7054,12 +7055,12 @@ MonoBehaviour:
   backgroundStage: {fileID: 389743978}
   speedLevel: 0
   MapSpeeds:
-  - 0.15
+  - 0.12
+  - 0.14
   - 0.17
   - 0.2
   - 0.22
   - 0.25
-  - 0.3
 --- !u!224 &1615067465
 RectTransform:
   m_ObjectHideFlags: 0

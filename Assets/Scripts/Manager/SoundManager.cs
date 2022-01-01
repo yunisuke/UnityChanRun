@@ -92,7 +92,7 @@ namespace Manager
             "univ1254",
             "univ1094",
             "univ1016",
-            "univ1256"
+            "univ1256",
         };
     }
 
