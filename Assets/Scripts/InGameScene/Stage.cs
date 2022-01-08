@@ -22,7 +22,7 @@ namespace InGameScene
             stageOffset = stageElements.Length * tmp.gameObject.GetComponent<RectTransform>().sizeDelta.x;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             MoveStage();
         }
