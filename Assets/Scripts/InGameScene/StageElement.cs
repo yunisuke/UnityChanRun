@@ -9,11 +9,23 @@ namespace InGameScene
         [SerializeField] private RectTransform enemyContainer;
 
         private RectTransform rectTransform;
+        
+        [SerializeField] private bool isInitialize = false;
+        public bool IsInitialize {
+            get {return isInitialize;}
+            set {isInitialize = value;}
+        }
 
         public Vector3 LocalPosition 
         {
             get {return rectTransform.localPosition;}
             set {rectTransform.localPosition = value;}
+        }
+
+        public Vector2 AnchoredPosition
+        {
+            get {return rectTransform.anchoredPosition;}
+            set{rectTransform.anchoredPosition = value;}
         }
 
         public RectTransform EnemyContainer
@@ -24,10 +36,9 @@ namespace InGameScene
         void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
-            // rb = GetComponent<Rigidbody2D>();
         }
 
-        public void ClearEnemys()
+        public void DestoryEnemys()
         {
             foreach (Transform tr in enemyContainer.transform)
             {

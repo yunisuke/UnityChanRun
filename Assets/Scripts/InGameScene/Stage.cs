@@ -10,7 +10,7 @@ namespace InGameScene
         [SerializeField] private Transform pos;
 
         [SerializeField] private GameObject coins;
-        [SerializeField] private GameObject enemys;
+        [SerializeField] private GameObject[] enemyPrefabs;
         private float stageOffset;
 
         [SerializeField] private bool isBackground = false;
@@ -38,18 +38,28 @@ namespace InGameScene
             {
                 var el = stageElements[i];
                 el.LocalPosition = new Vector2(el.LocalPosition.x - speed, el.LocalPosition.y);
-                if (el.LocalPosition.x < -40) {
+                if (el.AnchoredPosition.x < -40) {
                     el.LocalPosition = new Vector2(el.LocalPosition.x + stageOffset, el.LocalPosition.y);
+                    if (isBackground == false) DestoryObject(el);
+                }
+                else if (el.AnchoredPosition.x < 30 && el.IsInitialize == false)
+                {
                     if (isBackground == false) InstantiateObject(el);
                 }
             }
         }
 
+        private void DestoryObject(StageElement el)
+        {
+            el.DestoryEnemys();
+            el.IsInitialize = false;
+        }
+
         private void InstantiateObject(StageElement el)
         {
-            el.ClearEnemys();
-
-            Instantiate(enemys, el.EnemyContainer);
+            int rand = Random.Range(0, enemyPrefabs.Length);
+            Instantiate(enemyPrefabs[rand], el.EnemyContainer);
+            el.IsInitialize = true;
         }
     }
 }
