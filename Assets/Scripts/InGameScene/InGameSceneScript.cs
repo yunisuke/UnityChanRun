@@ -92,6 +92,8 @@ namespace InGameScene
 
         public void OnClickPauseButton()
         {
+            SoundManager.Instance.PlayVoice(VoiceType.Pause);
+
             Time.timeScale = 0;
             pauseScreenObj.SetActive(true);
         }

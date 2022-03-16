@@ -93,6 +93,7 @@ namespace Manager
             "univ1094",
             "univ1016",
             "univ1256",
+            "univ1209",
         };
     }
 
@@ -114,5 +115,6 @@ namespace Manager
         Damage,
         GameStart,
         HighJump,
+        Pause,
     }
 }
