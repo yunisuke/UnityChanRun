@@ -65,12 +65,12 @@ namespace InGameScene
                     airJumpNum++;
                     anm.SetTrigger("OneMoreJumpTrigger");
                     SoundManager.Instance.PlayVoice(VoiceType.JumpOneMore);
-                    rb.velocity = new Vector2(0, 15);
+                    rb.velocity = new Vector2(0, 11);
                 }
                 else
                 {
                     SoundManager.Instance.PlayVoice(VoiceType.Jump);
-                    rb.velocity = new Vector2(0, 18);
+                    rb.velocity = new Vector2(0, 13);
                 }
                 
                 SoundManager.Instance.PlaySE(SEType.Jump);

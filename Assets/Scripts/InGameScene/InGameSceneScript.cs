@@ -15,6 +15,8 @@ namespace InGameScene
         [SerializeField] private Text speedLevelText;
         [SerializeField] private StageController stgCntrl;
 
+        [SerializeField] private GameObject pauseScreenObj;
+
         private enum GameState
         {
             BeforeGame,
@@ -37,7 +39,7 @@ namespace InGameScene
         // Update is called once per frame
         void Update()
         {
-            if (IsTapScreen()) TapScreenEvent();
+            //if (IsTapScreen()) TapScreenEvent();
         }
 
         public void GameOver()
@@ -68,6 +70,11 @@ namespace InGameScene
             return false;
         }
 
+        public void OnClickScreen()
+        {
+            TapScreenEvent();
+        }
+
         private void TapScreenEvent()
         {
             switch(state)
@@ -81,6 +88,18 @@ namespace InGameScene
                     SceneManager.LoadScene("InGameScene");
                     break;
             }
+        }
+
+        public void OnClickPauseButton()
+        {
+            Time.timeScale = 0;
+            pauseScreenObj.SetActive(true);
+        }
+
+        public void OnClickStartButton()
+        {
+            Time.timeScale = 1;
+            pauseScreenObj.SetActive(false);
         }
     }
 }

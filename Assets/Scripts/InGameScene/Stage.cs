@@ -1,25 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 namespace InGameScene
 {
     public class Stage : MonoBehaviour
     {
-        [SerializeField] private StageElement[] stageElements;
-        [SerializeField] private Transform pos;
+        public Func<GameObject> LotteryEnemy {get; set;}
 
-        [SerializeField] private GameObject coins;
-        [SerializeField] private GameObject[] enemyPrefabs;
+        [SerializeField] private StageElement[] stageElements;
+
         private float stageOffset;
 
         [SerializeField] private bool isBackground = false;
         private float speed;
 
+        [SerializeField] private GameObject initGround;
+
         void Awake()
         {
             var tmp = stageElements[0];
             stageOffset = stageElements.Length * tmp.gameObject.GetComponent<RectTransform>().sizeDelta.x;
+
+            if (initGround != null) initGround.SetActive(true);
         }
 
         void FixedUpdate()
@@ -57,8 +62,8 @@ namespace InGameScene
 
         private void InstantiateObject(StageElement el)
         {
-            int rand = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs[rand], el.EnemyContainer);
+            var enemy = LotteryEnemy ();
+            Instantiate(enemy, el.EnemyContainer);
             el.IsInitialize = true;
         }
     }
