@@ -41,7 +41,7 @@ namespace InGameScene
 
         public void DefeatEnemy()
         {
-            rb.velocity = new Vector2(0, 20);
+            rb.velocity = new Vector2(0, 13);
             SoundManager.Instance.PlayVoice(VoiceType.Attack);
             airJumpNum = 0;
         }
@@ -81,7 +81,7 @@ namespace InGameScene
         {
             ResetJumpNum();
             SoundManager.Instance.PlayVoice(VoiceType.HighJump);
-            rb.velocity = new Vector2(0, 25);
+            rb.velocity = new Vector2(0, 18);
         }
 
         public bool IsOnGround()

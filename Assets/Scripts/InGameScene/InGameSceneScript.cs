@@ -16,6 +16,9 @@ namespace InGameScene
         [SerializeField] private StageController stgCntrl;
 
         [SerializeField] private GameObject pauseScreenObj;
+        [SerializeField] private GameObject filterScreenObj;
+
+        [SerializeField] private Fukidashi fkPrefab;
 
         private enum GameState
         {
@@ -90,18 +93,36 @@ namespace InGameScene
             }
         }
 
+        void OnApplicationFocus(bool isFocus)
+        {
+            if (isFocus == false)
+            {
+                OnClickPauseButton();
+            }
+        }
+
         public void OnClickPauseButton()
         {
-            SoundManager.Instance.PlayVoice(VoiceType.Pause);
+            //SoundManager.Instance.PlayVoice(VoiceType.Pause);
 
-            Time.timeScale = 0;
+            Time.timeScale = 0f;
             pauseScreenObj.SetActive(true);
         }
 
         public void OnClickStartButton()
         {
-            Time.timeScale = 1;
             pauseScreenObj.SetActive(false);
+            filterScreenObj.SetActive(true);
+
+            var fk = Instantiate(fkPrefab);
+            fk.transform.position = new Vector3(pl.transform.position.x + 2.1f, pl.transform.position.y + 1f);
+            fk.afterCountdownCallback = RestartGame;
+        }
+
+        private void RestartGame()
+        {
+            Time.timeScale = 1;
+            filterScreenObj.SetActive(false);
         }
     }
 }
