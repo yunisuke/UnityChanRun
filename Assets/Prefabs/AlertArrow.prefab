@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7077284800876039022}
   - component: {fileID: 455753098337752240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AlertArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 171366281
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e21b3aeb385f4a61acf4a35e981a5de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7465660785903686667}
   - component: {fileID: 2272321207355592608}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,8 +161,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 171366281
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa7dcc3d2cb804f88ad40b8af1cb749d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
