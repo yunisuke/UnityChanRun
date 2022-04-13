@@ -30,7 +30,7 @@ namespace InGameScene.Enemy
         {
             rb = GetComponent<Rigidbody2D>();
             rb.isKinematic = true;
-            rb.velocity = new Vector2(-3f, 0);
+            rb.velocity = new Vector2(-2f, 0);
 
             cencer.OnTriggerEnterEvent += InstantiateAlertObj;
         }
@@ -39,7 +39,7 @@ namespace InGameScene.Enemy
         {
             if (col.tag != "Player") return;
             var obj = Instantiate(alertArrowObj, new Vector3(9, transform.position.y, 0f), Quaternion.identity);
-            Destroy(obj, 0.8f);
+            Destroy(obj, 1.5f);
         }
 
         protected override void ItemEffect(Player player)

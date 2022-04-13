@@ -11,7 +11,7 @@ namespace InGameScene
     {
         [SerializeField] private Player pl;
         [SerializeField] private GameObject gameOverObj;
-        [SerializeField] private Text scoreText;
+        [SerializeField] private ImageNo scoreText;
         [SerializeField] private Text speedLevelText;
         [SerializeField] private StageController stgCntrl;
 
@@ -57,7 +57,7 @@ namespace InGameScene
         public void AddScore(int score)
         {
             this.score += score;
-            scoreText.text = this.score.ToString();
+            scoreText.SetNo(this.score);
         }
 
         public void UpdateSpeedLevelText(int speedLevel)
