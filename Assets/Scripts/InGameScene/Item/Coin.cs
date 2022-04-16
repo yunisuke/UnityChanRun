@@ -11,6 +11,7 @@ namespace InGameScene.Item
         {
             Destroy(gameObject);
             InGameManager.Instance.AddScore(100);
+            player.AppearGetItemEffect();
         }
     }
 }

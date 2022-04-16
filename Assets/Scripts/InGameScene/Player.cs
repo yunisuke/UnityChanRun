@@ -20,6 +20,8 @@ namespace InGameScene
         // 設置判定許容値。プレイヤーと地面までの距離は完全に0にならない。大きすぎると明らかに地面に接地していないのに接地判定されるので注意
         [SerializeField] private float onGroundOffset = 0.01f;
 
+        [SerializeField] private GameObject effectPrefab;
+
         void Start()
         {
             anm.SetTrigger("RunTrigger");
@@ -92,6 +94,18 @@ namespace InGameScene
             }
 
             return false;
+        }
+
+        public void AppearGetItemEffect()
+        {
+            StartCoroutine(GetItemEffect());
+        }
+
+        private IEnumerator GetItemEffect()
+        {
+            var obj = Instantiate(effectPrefab);
+            obj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
