@@ -28,6 +28,13 @@ namespace InGameScene
         }
         private GameState state;
 
+        public Player Player
+        {
+            get {
+                return pl;
+            }
+        }
+
         // Start is called before the first frame update
         void Start()
         {

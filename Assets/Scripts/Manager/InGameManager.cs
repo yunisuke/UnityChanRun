@@ -34,5 +34,10 @@ namespace Manager
         {
             scr.UpdateSpeedLevelText(speedLevel);
         }
+
+        public Player GetPlayer()
+        {
+            return scr.Player;
+        }
     }
 }

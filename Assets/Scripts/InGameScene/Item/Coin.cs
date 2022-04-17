@@ -7,8 +7,10 @@ namespace InGameScene.Item
 {
     public class Coin : BaseItem
     {
-        protected override void ItemEffect(Player player)
+        protected override void ItemEffect(Collider2D col)
         {
+            var player = InGameManager.Instance.GetPlayer();
+
             Destroy(gameObject);
             InGameManager.Instance.AddScore(100);
             player.AppearGetItemEffect();

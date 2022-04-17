@@ -6,7 +6,7 @@ using DG.Tweening;
 
 namespace InGameScene.Enemy
 {
-    public class FallEnemy : BaseItem
+    public class FallEnemy : BaseEnemy
     {
         [SerializeField]
         private Collider2D hitCollider;
@@ -44,23 +44,7 @@ namespace InGameScene.Enemy
             rb.velocity = new Vector2(0, -20f);
         }
 
-        protected override void ItemEffect(Player player)
-        {
-            if (player.IsOnGround())
-            {
-                // 地上で接敵するとゲームオーバー
-                InGameManager.Instance.GameOver();
-            }
-            else
-            {
-                // 空中で接敵すると撃破
-                player.DefeatEnemy();
-                Dead();
-                InGameManager.Instance.AddScore(1000);
-            }
-        }
-
-        private void Dead()
+        protected override void Dead()
         {
             rb.velocity = new Vector2(10, 10);
             hitCollider.enabled = false;

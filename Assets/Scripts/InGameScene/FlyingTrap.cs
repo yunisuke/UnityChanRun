@@ -42,7 +42,7 @@ namespace InGameScene.Enemy
             Destroy(obj, 1.5f);
         }
 
-        protected override void ItemEffect(Player player)
+        protected override void ItemEffect(Collider2D col)
         {
             // 地上で接敵するとゲームオーバー
             InGameManager.Instance.GameOver();

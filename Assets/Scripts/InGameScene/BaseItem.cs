@@ -22,10 +22,10 @@ namespace InGameScene
         {
             if (col.tag != "Player") return;
             SoundManager.Instance.PlaySE(hitSe);
-            ItemEffect(col.GetComponentInParent<Player>());
+            ItemEffect(col);
         }
 
-        protected abstract void ItemEffect(Player player);
+        protected abstract void ItemEffect(Collider2D col);
         protected virtual void Initialize() {}
     }
 }

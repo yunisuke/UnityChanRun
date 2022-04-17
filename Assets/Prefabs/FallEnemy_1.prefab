@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSe: 2
+  hitEffectObj: {fileID: 6545538208853273247, guid: 288b6c8eaffb84bbfb3d0c4233da7b93, type: 3}
   hitCollider: {fileID: 873079174929156900}
   groundCollider: {fileID: 873079174970459024}
   cencer: {fileID: 6053298492872204742}

@@ -27,8 +27,10 @@ namespace InGameScene.Enemy
 
         private bool front;
         private bool back;
-        protected override void ItemEffect(Player player)
+        protected override void ItemEffect(Collider2D col)
         {
+            var player = InGameManager.Instance.GetPlayer();
+
             if (player.IsOnGround())
             {
                 // 地上で接敵するとゲームオーバー
