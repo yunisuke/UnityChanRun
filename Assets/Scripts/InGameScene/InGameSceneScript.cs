@@ -25,6 +25,7 @@ namespace InGameScene
             BeforeGame,
             InGame,
             GameOver,
+            Pause,
         }
         private GameState state;
 
@@ -110,10 +111,13 @@ namespace InGameScene
 
         public void OnClickPauseButton()
         {
+            if (state == GameState.GameOver || state == GameState.Pause) return;
             //SoundManager.Instance.PlayVoice(VoiceType.Pause);
 
             Time.timeScale = 0f;
             pauseScreenObj.SetActive(true);
+
+            state = GameState.Pause;
         }
 
         public void OnClickStartButton()
@@ -130,6 +134,8 @@ namespace InGameScene
         {
             Time.timeScale = 1;
             filterScreenObj.SetActive(false);
+
+            state = GameState.InGame;
         }
     }
 }
