@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
+  m_Sprite: {fileID: 3940791560170073113, guid: 64da7baea7a5d4a329484c8539ee9b1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6666667, y: 0.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,8 +106,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.65}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.6315789, y: 0.6315789}
+    newSize: {x: 0.6666667, y: 0.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 3238710062677232078}
   - component: {fileID: 3238710062677232077}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Item_point_purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,3 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSe: 1
+  effectPrefab: {fileID: 5376933693177283056, guid: 47d1d15c4394d4725aef91e8432a4800, type: 3}

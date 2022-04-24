@@ -130,6 +130,12 @@ namespace InGameScene
             fk.afterCountdownCallback = RestartGame;
         }
 
+        public void OnClickStopGameButton()
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("TitleScene");
+        }
+
         private void RestartGame()
         {
             Time.timeScale = 1;
