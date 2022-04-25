@@ -10,6 +10,9 @@ namespace InGameScene
         [SerializeField] private SEType hitSe;
         private HitChecker hitChk;
 
+        [SerializeField] private bool isEffectPulling = true;
+        private bool isPulling = false;
+
         void Awake()
         {
             hitChk = GetComponentInChildren<HitChecker>();
@@ -18,11 +21,28 @@ namespace InGameScene
             Initialize();
         }
 
+        void Update()
+        {
+            if (isPulling)
+            {
+                Vector3 vec = (InGameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
+                var pos = vec * 0.4f;
+                transform.position += pos;
+            }
+        }
+
         private void OnTriggerEnterEvent(Collider2D col)
         {
-            if (col.tag != "Player") return;
-            SoundManager.Instance.PlaySE(hitSe);
-            ItemEffect(col);
+            if (col.tag == "Player")
+            {
+                SoundManager.Instance.PlaySE(hitSe);
+                ItemEffect(col);
+            }
+
+            if (col.tag == "PullItem" && isEffectPulling)
+            {
+                isPulling = true;
+            }
         }
 
         protected abstract void ItemEffect(Collider2D col);

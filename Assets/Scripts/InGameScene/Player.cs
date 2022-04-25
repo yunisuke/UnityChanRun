@@ -15,7 +15,7 @@ namespace InGameScene
         [SerializeField] private Animator anm;
         [SerializeField] private GroundChecker grChk;
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private HitChecker hitChk;
+        [SerializeField] private GameObject pullItemCollider;
 
         // 設置判定許容値。プレイヤーと地面までの距離は完全に0にならない。大きすぎると明らかに地面に接地していないのに接地判定されるので注意
         [SerializeField] private float onGroundOffset = 0.01f;
@@ -23,7 +23,6 @@ namespace InGameScene
         void Start()
         {
             anm.SetTrigger("RunTrigger");
-            hitChk.OnTriggerEnterEvent += (x) => {};
         }
 
         void Update()
@@ -50,7 +49,6 @@ namespace InGameScene
         {
             // ゲームオーバー演出
             rb.velocity = new Vector2(-4, 10);
-            hitChk.SetActive(false);
             grChk.SetActive(false);
             SoundManager.Instance.PlayVoice(VoiceType.Damage);
             anm.SetTrigger("DamageTrigger");
@@ -104,6 +102,11 @@ namespace InGameScene
             var obj = Instantiate(effectPrefab);
             obj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             yield return new WaitForSeconds(0.1f);
+        }
+
+        public void SetActivePullItemCollider(bool isActive)
+        {
+            pullItemCollider.SetActive(isActive);
         }
     }
 }

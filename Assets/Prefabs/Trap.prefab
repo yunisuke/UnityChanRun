@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSe: 2
+  isEffectPulling: 0
 --- !u!95 &849307713
 Animator:
   serializedVersion: 3

@@ -39,5 +39,10 @@ namespace Manager
         {
             return scr.Player;
         }
+
+        public void EnablePullItemEffect()
+        {
+            scr.EnablePullItemEffect();
+        }
     }
 }

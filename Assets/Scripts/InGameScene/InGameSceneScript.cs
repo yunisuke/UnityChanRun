@@ -143,5 +143,17 @@ namespace InGameScene
 
             state = GameState.InGame;
         }
+
+        public void EnablePullItemEffect()
+        {
+            StartCoroutine(PullItemEffect());
+        }
+
+        private IEnumerator PullItemEffect()
+        {
+            pl.SetActivePullItemCollider(true);
+            yield return new WaitForSeconds(5);
+            pl.SetActivePullItemCollider(false);
+        }
     }
 }
