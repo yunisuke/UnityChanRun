@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Manager;
+using DG.Tweening;
 
 namespace InGameScene
 {
@@ -23,6 +24,30 @@ namespace InGameScene
         void Start()
         {
             anm.SetTrigger("RunTrigger");
+            StartCoroutine(AfterimageEffect());
+        }
+
+        private IEnumerator AfterimageEffect()
+        {
+            var sp = GetComponentInChildren<SpriteRenderer>();
+
+            while(true)
+            {
+                var obj = new GameObject();
+                var spR = obj.AddComponent<SpriteRenderer>();
+                spR.sprite = sp.sprite;
+                spR.color = new Color(1, 1, 1, 0.5f);
+
+                var seq = DOTween.Sequence();
+                seq.Append(spR.DOFade(0, 0.5f));
+
+                
+                obj.transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y);
+                seq.Join(obj.transform.DOLocalMoveX(-2f, 0.5f).SetRelative().SetEase(Ease.Linear));
+                seq.onComplete = () => Destroy(obj);
+
+                yield return new WaitForSeconds(0.1f);
+            }
         }
 
         void Update()
