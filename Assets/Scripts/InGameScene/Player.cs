@@ -18,6 +18,8 @@ namespace InGameScene
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private GameObject pullItemCollider;
 
+        [SerializeField] private Collider2D cd;
+
         // 設置判定許容値。プレイヤーと地面までの距離は完全に0にならない。大きすぎると明らかに地面に接地していないのに接地判定されるので注意
         [SerializeField] private float onGroundOffset = 0.01f;
 
@@ -73,6 +75,8 @@ namespace InGameScene
         public void GameOver()
         {
             // ゲームオーバー演出
+            cd.enabled = false;
+
             rb.velocity = new Vector2(-4, 10);
             grChk.SetActive(false);
             SoundManager.Instance.PlayVoice(VoiceType.Damage);
