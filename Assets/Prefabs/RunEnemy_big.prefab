@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSe: 2
   isEffectPulling: 1
+  hitEffectObj: {fileID: 6545538208853273247, guid: 288b6c8eaffb84bbfb3d0c4233da7b93, type: 3}
   hitCollider: {fileID: 6987663066959878545}
   groundCollider: {fileID: 6987663069015917247}
   spriteRenderer: {fileID: 6987663067582455471}

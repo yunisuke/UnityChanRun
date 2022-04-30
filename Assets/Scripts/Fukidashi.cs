@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Manager;
+using TMPro;
 
 public class Fukidashi : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] numbers;
-
-    [SerializeField]
-    private SpriteRenderer num;
+    private TextMeshPro tmp;
 
     public UnityAction afterCountdownCallback;
 
     void Awake()
     {
-        StartCoroutine(countdown());
+        StartCoroutine(Countdown());
     }
 
-    private IEnumerator countdown()
+    private IEnumerator Countdown()
     {
         var count = 3;
         while(count > 0)
         {
             PlayVoice(count);
 
-            num.sprite = numbers[count];
+            tmp.text = count.ToString();
             count--;
             yield return new WaitForSecondsRealtime(1.0f);
         }
