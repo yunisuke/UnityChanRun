@@ -26,9 +26,10 @@ namespace InGameScene
         void Start()
         {
             anm.SetTrigger("RunTrigger");
-            StartCoroutine(AfterimageEffect());
+            aeCr = StartCoroutine(AfterimageEffect());
         }
 
+        private Coroutine aeCr;
         private IEnumerator AfterimageEffect()
         {
             var sp = GetComponentInChildren<SpriteRenderer>();
@@ -81,6 +82,7 @@ namespace InGameScene
             grChk.SetActive(false);
             SoundManager.Instance.PlayVoice(VoiceType.Damage);
             anm.SetTrigger("DamageTrigger");
+            StopCoroutine(aeCr);
         }
 
         public void Jump()
