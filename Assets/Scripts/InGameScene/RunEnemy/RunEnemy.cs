@@ -15,8 +15,7 @@ namespace InGameScene.Enemy
         private SpriteRenderer spriteRenderer;
 
         private Rigidbody2D rb;
-        private Tweener tweener;
-        
+
         protected override void Initialize()
         {
             rb = GetComponent<Rigidbody2D>();
