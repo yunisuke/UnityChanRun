@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSe: 2
+  isEffectPulling: 0
   hitCollider: {fileID: 8189021441636459430}
   groundCollider: {fileID: 8189021441528310546}
   cencer: {fileID: 3006523936162957636}

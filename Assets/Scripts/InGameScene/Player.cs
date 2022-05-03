@@ -63,7 +63,7 @@ namespace InGameScene
 
         private void ResetJumpNum()
         {
-                airJumpNum = 0;
+            airJumpNum = 0;
         }
 
         public void DefeatEnemy(float defeatJumpSpeed)

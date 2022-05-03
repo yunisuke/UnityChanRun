@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Manager;
+using TMPro;
 
 namespace InGameScene
 {
@@ -11,7 +12,7 @@ namespace InGameScene
     {
         [SerializeField] private Player pl;
         [SerializeField] private GameObject gameOverObj;
-        [SerializeField] private ImageNo scoreText;
+        [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private Text speedLevelText;
         [SerializeField] private StageController stgCntrl;
 
@@ -65,7 +66,7 @@ namespace InGameScene
         public void AddScore(int score)
         {
             this.score += score;
-            scoreText.SetNo(this.score);
+            scoreText.text = this.score.ToString("N0");
         }
 
         public void UpdateSpeedLevelText(int speedLevel)
