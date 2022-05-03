@@ -66,9 +66,9 @@ namespace InGameScene
                 airJumpNum = 0;
         }
 
-        public void DefeatEnemy()
+        public void DefeatEnemy(float defeatJumpSpeed)
         {
-            rb.velocity = new Vector2(0, 13);
+            rb.velocity = new Vector2(0, defeatJumpSpeed);
             SoundManager.Instance.PlayVoice(VoiceType.Attack);
             airJumpNum = 0;
         }

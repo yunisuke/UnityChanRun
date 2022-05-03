@@ -11,7 +11,10 @@ namespace InGameScene
         private GameObject hitEffectObj;
 
         [SerializeField]
-        private readonly int Score = 100;
+        private int Score = 100;
+
+        [SerializeField]
+        private float defeatJumpSpeed = 13f;
 
         protected override void ItemEffect(Collider2D col)
         {
@@ -30,7 +33,7 @@ namespace InGameScene
             else
             {
                 // 空中で接敵すると撃破
-                pl.DefeatEnemy();
+                pl.DefeatEnemy(defeatJumpSpeed);
                 AppearHitEffect(col);
                 Dead();
                 InGameManager.Instance.AddScore(Score);
