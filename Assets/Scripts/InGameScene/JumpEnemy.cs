@@ -27,6 +27,7 @@ namespace InGameScene.Enemy
         [SerializeField] private float onGroundOffset = 0.01f;
 
         private Rigidbody2D rb;
+        private bool isDead;
         
         protected override void Initialize()
         {
@@ -44,6 +45,8 @@ namespace InGameScene.Enemy
 
         private bool IsOnGround()
         {
+            if (isDead) return false;
+
             if (grChk.distanceFromGround <= onGroundOffset && rb.velocity.y <= 0) 
             {
                 return true;
@@ -54,6 +57,8 @@ namespace InGameScene.Enemy
 
         protected override void Dead()
         {
+            isDead = true;
+
             hitCollider.enabled = false;
             groundCollider.enabled = false;
             grChk.enabled = false;
