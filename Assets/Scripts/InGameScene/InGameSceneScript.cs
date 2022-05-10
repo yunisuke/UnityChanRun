@@ -18,6 +18,7 @@ namespace InGameScene
 
         [SerializeField] private GameObject pauseScreenObj;
         [SerializeField] private GameObject filterScreenObj;
+        [SerializeField] private ResultScreen resultScreenScr;
 
         [SerializeField] private Fukidashi fkPrefab;
 
@@ -58,8 +59,15 @@ namespace InGameScene
         {
             state = GameState.GameOver;
             pl.GameOver();
-            gameOverObj.SetActive(true);
             stgCntrl.GameOver();
+
+            StartCoroutine(GameOverWait());
+        }
+
+        private IEnumerator GameOverWait()
+        {
+            yield return new WaitForSeconds(1.0f);
+            resultScreenScr.GameOver(score);
         }
 
         int score = 0;
@@ -97,7 +105,6 @@ namespace InGameScene
                     pl.Jump();
                     break;
                 case GameState.GameOver:
-                    SceneManager.LoadScene("InGameScene");
                     break;
             }
         }
