@@ -43,7 +43,7 @@ namespace InGameScene
         protected virtual void AppearHitEffect(Collider2D col)
         {
             var obj = Instantiate(hitEffectObj);
-            obj.transform.position = new Vector2(col.transform.position.x, col.transform.position.y);
+            obj.transform.position = new Vector2(col.transform.position.x + 1f, col.transform.position.y);
             Destroy(obj, 2f);
         }
 
