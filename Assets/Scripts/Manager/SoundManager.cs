@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using System.Linq;
 
@@ -65,6 +66,17 @@ namespace Manager
             var se = seList.Find (x => x.name == SE_Names[(int)se_type]);
             if (se == null) return;
 
+            if (seAudio.isPlaying) {
+                _ = DelaySE(se);
+                return;
+            }
+            seAudio.PlayOneShot (se);
+        }
+
+        private async Task DelaySE(AudioClip se)
+        {
+            var rnd = Random.Range(1, 15);
+            await Task.Delay(rnd);
             seAudio.PlayOneShot (se);
         }
 
@@ -72,7 +84,19 @@ namespace Manager
             var voice = voiceList.Find (x => x.name == Voice_Names[(int)voice_type]);
             if (voice == null) return;
 
+            if (voiceAudio.isPlaying) {
+                _ = DelayVoice(voice);
+                return;
+            }
+
             voiceAudio.PlayOneShot(voice);
+        }
+
+        private async Task DelayVoice(AudioClip voice)
+        {
+            var rnd = Random.Range(1, 15);
+            await Task.Delay(rnd);
+            voiceAudio.PlayOneShot (voice);
         }
 
         private readonly string[] BGM_Names = {
