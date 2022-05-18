@@ -14,6 +14,11 @@ public class ResultScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Button okButton;
 
+    void Update()
+    {
+        if (isMoveScene) SceneManager.LoadScene("InGameScene");
+    }
+
     public void GameOver(int score)
     {
         gameObject.SetActive(true);
@@ -57,7 +62,14 @@ public class ResultScreen : MonoBehaviour
 
     public void OnClickOkButton()
     {
-        SceneManager.LoadScene("InGameScene");
+        AdManager.Instance.HideAds();
+        AdManager.Instance.ShowIntersitialAd(NextGame);
+    }
+
+    private bool isMoveScene = false;
+    private void NextGame(object sender, EventArgs args)
+    {
+        isMoveScene = true;
     }
 
     public void OnClickTweetButton()

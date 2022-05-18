@@ -10,6 +10,7 @@ public class TitleSceneScript : MonoBehaviour
     {
         FPSManager.Instance.Initialize ();
         SoundManager.Instance.Initialize ();
+        AdManager.Instance.Initialize();
     }
 
     public void OnClickStartButton()

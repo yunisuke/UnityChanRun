@@ -68,6 +68,7 @@ namespace InGameScene
         {
             yield return new WaitForSeconds(1.0f);
             resultScreenScr.GameOver(score);
+            AdManager.Instance.ShowAds();
         }
 
         int score = 0;
