@@ -100,7 +100,8 @@ namespace Manager
         }
 
         private readonly string[] BGM_Names = {
-            "Main"
+            "Main",
+            "InGame"
         };
 
         private readonly string[] SE_Names = {
@@ -127,6 +128,7 @@ namespace Manager
 
     public enum BGMType {
         Main = 0,
+        InGame,
     }
 
     public enum SEType {

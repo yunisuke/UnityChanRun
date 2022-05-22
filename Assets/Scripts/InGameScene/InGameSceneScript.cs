@@ -46,7 +46,7 @@ namespace InGameScene
             FPSManager.Instance.Initialize ();
             SoundManager.Instance.Initialize ();
             InGameManager.Instance.Initialize (this);
-            //SoundManager.Instance.PlayBGM(BGMType.Main);
+            SoundManager.Instance.PlayBGM(BGMType.InGame);
         }
 
         // Update is called once per frame
