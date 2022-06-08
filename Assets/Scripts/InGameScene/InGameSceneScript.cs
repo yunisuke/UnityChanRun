@@ -47,6 +47,7 @@ namespace InGameScene
             SoundManager.Instance.Initialize ();
             InGameManager.Instance.Initialize (this);
             SoundManager.Instance.PlayBGM(BGMType.InGame);
+            AdManager.Instance.Initialize ();
         }
 
         // Update is called once per frame

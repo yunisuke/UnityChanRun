@@ -109,6 +109,8 @@ namespace Manager
             "Coin",
             "Attack",
             "laser2",
+            "Warning",
+            "Throw",
         };
 
         private readonly string[] Voice_Names = {
@@ -136,6 +138,8 @@ namespace Manager
         Coin,
         Attack,
         Shot,
+        Warning,
+        Throw,
     }
 
     public enum VoiceType {

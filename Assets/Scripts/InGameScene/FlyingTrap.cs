@@ -39,7 +39,14 @@ namespace InGameScene.Enemy
         {
             if (col.tag != "Player") return;
             var obj = Instantiate(alertArrowObj, new Vector3(9, transform.position.y, 0f), Quaternion.identity);
+            SoundManager.Instance.PlaySE(SEType.Warning);
+            Invoke("PlaySE", 1.2f);
             Destroy(obj, 1.5f);
+        }
+
+        private void PlaySE()
+        {
+            SoundManager.Instance.PlaySE(SEType.Throw);
         }
 
         protected override void ItemEffect(Collider2D col)
